@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const URL = 'http://192.168.1.102:5000/';
+
 
 const MessageField = (props) => {
     const [newMessage, setNewMessage] = useState('');
@@ -7,7 +9,7 @@ const MessageField = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch('http://localhost:5000/send_message', {
+        fetch(URL + 'send_message', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
