@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 
 const URL = "http://192.168.1.102:5000/";
+var selectChat;
 
 const MessageHistory = (props) => {
   const { socket, messages, setMessages, conversationId } = props;
+  selectChat = conversationId;
   
   useEffect(() => {
     async function getMessages() {
@@ -25,7 +27,7 @@ const MessageHistory = (props) => {
 
   useEffect(() => {
     socket.on("message", (data) => {
-      if (data.conversationId === conversationId) {
+      if (data.conversationId === selectChat) {
         setMessages((messages) => [...messages, data]);
       }
     });
