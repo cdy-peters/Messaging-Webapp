@@ -1,16 +1,16 @@
 import React from "react";
+import { useContextProvider } from "../../utils/context";
 
 const URL = "http://192.168.1.102:5000/";
 
 const SettingsLeave = (props) => {
+  const { conversations, setConversations, socket } = props;
+
   const {
     selectedConversation,
     setSelectedConversation,
-    conversations,
-    setConversations,
     setShowSettings,
-    socket,
-  } = props;
+  } = useContextProvider();
 
   const handleLeave = () => {
     const url = URL + "leave_conversation";
